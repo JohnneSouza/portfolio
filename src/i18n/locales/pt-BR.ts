@@ -20,10 +20,6 @@ const ptBR: Messages = {
   },
 
   theme: {
-    choose: "Escolher tema visual",
-    menuTitle: "Tema do portfólio",
-    chess: "Xadrez",
-    rubik: "Cubo de Rubik",
     toggleMode: "Alternar entre modo claro e escuro",
     toggleMenu: "Alternar menu de navegação",
     footerMode: "Modo do tema:",
@@ -40,8 +36,7 @@ const ptBR: Messages = {
     bio: "Construo e escalo sistemas distribuídos, APIs REST e microsserviços para plataformas de pagamento e e-commerce — principalmente em Java, com Spring, Quarkus, GraphQL e programação reativa. Liderei migrações de arquitetura e iniciativas de escalabilidade para Meta, AB InBev e Domino's Pizza.",
     ctaProjects: "Ver meus projetos",
     ctaContact: "Entrar em contato",
-    avatarAlt:
-      "Ilustração de um desenvolvedor Java em uma mesa com um notebook, um tabuleiro de xadrez e um cubo de Rubik",
+    avatarAlt: "Ilustração de um desenvolvedor Java em uma mesa com um notebook",
   },
 
   about: {
@@ -115,12 +110,6 @@ const ptBR: Messages = {
     codeLink: "Código",
     demoLink: "Demo ao vivo",
     items: {
-      chessly: {
-        title: "Chessly — Plataforma de Xadrez em Tempo Real",
-        description:
-          "Uma plataforma de xadrez multiplayer com matchmaking ao vivo, validação de jogadas e histórico de partidas, construída como um back-end Spring Boot + WebSocket que serve um cliente React.",
-        tags: ["Spring Boot", "WebSocket", "PostgreSQL", "Redis"],
-      },
       cubecommerce: {
         title: "CubeCommerce Microservices",
         description:
@@ -136,14 +125,8 @@ const ptBR: Messages = {
       solveio: {
         title: "Solve.io — API de Visualização de Algoritmos",
         description:
-          "Um serviço Java que resolve e transmite, passo a passo, soluções para quebra-cabeças como o cubo de Rubik (algoritmo de Kociemba) e N-Queens para um cliente web.",
+          "Um serviço Java que resolve e transmite, passo a passo, soluções para quebra-cabeças algorítmicos como N-Queens para um cliente web.",
         tags: ["Java", "Algoritmos", "Spring Boot", "SSE"],
-      },
-      grandmaster: {
-        title: "GrandmasterAnalytics",
-        description:
-          "Um pipeline de dados que ingere arquivos de partidas do chess.com/lichess, calcula estatísticas dos jogadores e expõe insights por meio de uma API GraphQL.",
-        tags: ["GraphQL", "Processamento em Lote", "MongoDB", "AWS S3"],
       },
       inventoryhub: {
         title: "InventoryHub",
@@ -213,9 +196,14 @@ const ptBR: Messages = {
         period: "",
       },
     },
-    certificationsEmpty: "As certificações serão listadas aqui conforme eu concluir.",
-    /** Nenhuma certificação listada no currículo ainda — preencha quando tiver. */
-    certifications: {},
+    certificationLink: "Ver credencial",
+    /** Nomes de certificação são nomes próprios e não são traduzidos. */
+    certifications: {
+      ccarf: {
+        title: "CCAR-F",
+        name: "Claude Certified Architect – Foundations",
+      },
+    },
   },
 
   contact: {

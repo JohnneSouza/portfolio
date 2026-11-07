@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useThemeContext } from "../context/ThemeContext";
 import { LOCALES, LOCALE_BADGE, useLocale } from "../i18n/LocaleContext";
 import type { Messages } from "../i18n/locales/en-US";
-import { RubikCube, ChessPiece } from "./ThemeDecor";
 
 const NAV_LINKS: { href: string; key: keyof Messages["nav"] }[] = [
   { href: "#about", key: "about" },
@@ -13,21 +12,9 @@ const NAV_LINKS: { href: string; key: keyof Messages["nav"] }[] = [
 ];
 
 export default function Header() {
-  const { mode, toggleMode, themeStyle, setThemeStyle } = useThemeContext();
+  const { mode, toggleMode } = useThemeContext();
   const { locale, setLocale, t } = useLocale();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [themeMenuOpen, setThemeMenuOpen] = useState(false);
-  const themeMenuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (themeMenuRef.current && !themeMenuRef.current.contains(e.target as Node)) {
-        setThemeMenuOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/70 backdrop-blur-xl transition-colors dark:border-white/10 dark:bg-slate-950/70">
@@ -54,63 +41,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {/* Theme style selector */}
-          <div className="relative" ref={themeMenuRef}>
-            <button
-              type="button"
-              onClick={() => setThemeMenuOpen((o) => !o)}
-              aria-label={t.theme.choose}
-              aria-expanded={themeMenuOpen}
-              className="flex h-10 items-center gap-2 rounded-full border border-black/10 bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-accent hover:text-accent dark:border-white/10 dark:bg-slate-900 dark:text-slate-200"
-            >
-              {themeStyle === "chess" ? (
-                <ChessPiece symbol="♞" size={18} />
-              ) : (
-                <RubikCube size={16} />
-              )}
-              <span className="hidden sm:inline">
-                {themeStyle === "chess" ? t.theme.chess : t.theme.rubik}
-              </span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className={`transition-transform ${themeMenuOpen ? "rotate-180" : ""}`}>
-                <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            {themeMenuOpen && (
-              <div className="absolute right-0 mt-2 w-48 overflow-hidden rounded-xl border border-black/10 bg-white py-1.5 shadow-xl shadow-black/10 dark:border-white/10 dark:bg-slate-900">
-                <p className="px-3 pb-1 pt-1 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                  {t.theme.menuTitle}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setThemeStyle("chess");
-                    setThemeMenuOpen(false);
-                  }}
-                  className={`flex w-full items-center gap-2.5 px-3 py-2 text-sm transition hover:bg-black/5 dark:hover:bg-white/10 ${
-                    themeStyle === "chess" ? "text-accent font-semibold" : "text-slate-700 dark:text-slate-200"
-                  }`}
-                >
-                  <ChessPiece symbol="♞" size={18} />
-                  {t.theme.chess}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setThemeStyle("rubik");
-                    setThemeMenuOpen(false);
-                  }}
-                  className={`flex w-full items-center gap-2.5 px-3 py-2 text-sm transition hover:bg-black/5 dark:hover:bg-white/10 ${
-                    themeStyle === "rubik" ? "text-accent font-semibold" : "text-slate-700 dark:text-slate-200"
-                  }`}
-                >
-                  <RubikCube size={16} />
-                  {t.theme.rubik}
-                </button>
-              </div>
-            )}
-          </div>
-
           {/* Language selector */}
           <div
             role="group"

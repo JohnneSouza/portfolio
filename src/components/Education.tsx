@@ -2,6 +2,7 @@ import { useLocale } from "../i18n/LocaleContext";
 import type { Messages } from "../i18n/locales/en-US";
 
 type DegreeId = keyof Messages["education"]["degrees"];
+type CertificationId = keyof Messages["education"]["certifications"];
 
 /** Render order and icons, keyed to match the dictionaries. */
 const DEGREE_ORDER: DegreeId[] = ["postgrad", "bachelor", "technical"];
@@ -10,6 +11,17 @@ const DEGREE_ICONS: Record<DegreeId, string> = {
   postgrad: "🔐",
   bachelor: "🎓",
   technical: "🤖",
+};
+
+const CERTIFICATION_ORDER: CertificationId[] = ["ccarf"];
+
+const CERTIFICATION_ICONS: Record<CertificationId, string> = {
+  ccarf: "📜",
+};
+
+/** Verification links stay out of the dictionaries: URLs are language-independent. */
+const CERTIFICATION_LINKS: Record<CertificationId, string> = {
+  ccarf: "https://www.credly.com/badges/79b71f22-8201-4de0-8e07-09390b81896e",
 };
 
 export default function Education() {
@@ -53,16 +65,31 @@ export default function Education() {
 
           <div className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-slate-900">
             <h3 className="mb-4 font-semibold text-slate-900 dark:text-white">{t.education.certificationsTitle}</h3>
-            {/* `certifications` is an empty record until there are real ones to list.
-                When you add entries to the dictionaries, restore a CERTIFICATION_ORDER
-                array and an icon map here, keyed like DEGREE_ORDER above. */}
-            <div className="flex items-start gap-3">
-              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 text-xl">
-                📜
-              </span>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                {t.education.certificationsEmpty}
-              </p>
+            <div className="space-y-4">
+              {CERTIFICATION_ORDER.map((id) => {
+                const certification = t.education.certifications[id];
+                return (
+                  <a
+                    key={id}
+                    href={CERTIFICATION_LINKS[id]}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-start gap-3 rounded-xl p-2 transition hover:bg-black/3 dark:hover:bg-white/5"
+                  >
+                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 text-xl">
+                      {CERTIFICATION_ICONS[id]}
+                    </span>
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">{certification.title}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">{certification.name}</p>
+                      <span className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-accent transition group-hover:brightness-110">
+                        {t.education.certificationLink}
+                        <span aria-hidden="true">↗</span>
+                      </span>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -5,20 +5,16 @@ type ProjectId = keyof Messages["projects"]["items"];
 
 /** Render order and language-independent data, keyed to match the dictionaries. */
 const PROJECT_ORDER: ProjectId[] = [
-  "chessly",
   "cubecommerce",
   "taskforge",
   "solveio",
-  "grandmaster",
   "inventoryhub",
 ];
 
 const PROJECT_META: Record<ProjectId, { emoji: string; github: string; demo: string }> = {
-  chessly: { emoji: "♟️", github: "https://github.com", demo: "#" },
   cubecommerce: { emoji: "🧩", github: "https://github.com", demo: "#" },
   taskforge: { emoji: "✅", github: "https://github.com", demo: "#" },
   solveio: { emoji: "🧠", github: "https://github.com", demo: "#" },
-  grandmaster: { emoji: "📊", github: "https://github.com", demo: "#" },
   inventoryhub: { emoji: "📦", github: "https://github.com", demo: "#" },
 };
 

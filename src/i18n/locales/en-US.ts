@@ -26,10 +26,6 @@ const enUS = {
   },
 
   theme: {
-    choose: "Choose visual theme",
-    menuTitle: "Portfolio theme",
-    chess: "Chess",
-    rubik: "Rubik's Cube",
     toggleMode: "Toggle dark and light mode",
     toggleMenu: "Toggle navigation menu",
     footerMode: "Theme mode:",
@@ -46,8 +42,7 @@ const enUS = {
     bio: "I build and scale distributed systems, REST APIs, and microservices for payment and e-commerce platforms — mostly in Java, with Spring, Quarkus, GraphQL, and reactive programming. I've led architecture migrations and scalability initiatives for Meta, AB InBev, and Domino's Pizza.",
     ctaProjects: "View my projects",
     ctaContact: "Get in touch",
-    avatarAlt:
-      "Illustration of a Java developer at a desk with a laptop, a chessboard and a Rubik's cube",
+    avatarAlt: "Illustration of a Java developer at a desk with a laptop",
   },
 
   about: {
@@ -123,12 +118,6 @@ const enUS = {
     codeLink: "Code",
     demoLink: "Live demo",
     items: {
-      chessly: {
-        title: "Chessly — Realtime Chess Platform",
-        description:
-          "A multiplayer chess platform with live matchmaking, move validation, and game history, built as a Spring Boot + WebSocket backend serving a React client.",
-        tags: ["Spring Boot", "WebSocket", "PostgreSQL", "Redis"],
-      },
       cubecommerce: {
         title: "CubeCommerce Microservices",
         description:
@@ -144,14 +133,8 @@ const enUS = {
       solveio: {
         title: "Solve.io — Algorithm Visualizer API",
         description:
-          "A Java service that solves and streams step-by-step solutions for puzzles like the Rubik's cube (Kociemba algorithm) and N-Queens back to a web client.",
+          "A Java service that solves and streams step-by-step solutions for algorithmic puzzles like N-Queens back to a web client.",
         tags: ["Java", "Algorithms", "Spring Boot", "SSE"],
-      },
-      grandmaster: {
-        title: "GrandmasterAnalytics",
-        description:
-          "A data pipeline that ingests chess.com/lichess game archives, computes player statistics, and exposes insights through a GraphQL API.",
-        tags: ["GraphQL", "Batch Processing", "MongoDB", "AWS S3"],
       },
       inventoryhub: {
         title: "InventoryHub",
@@ -221,9 +204,17 @@ const enUS = {
         period: "",
       },
     },
-    certificationsEmpty: "Certifications will be listed here as I complete them.",
-    /** No certifications listed on the resume yet — fill these in when you have them. */
-    certifications: {},
+    certificationLink: "View credential",
+    /**
+     * Certification names are proper nouns and stay untranslated. Verification
+     * links are language-independent, so they live in Education.tsx instead.
+     */
+    certifications: {
+      ccarf: {
+        title: "CCAR-F",
+        name: "Claude Certified Architect – Foundations",
+      },
+    },
   },
 
   contact: {

@@ -8,10 +8,8 @@ file.
 
 - **Single-page layout** — Hero, About, Skills, Projects, Experience, Education, Contact,
   with anchor-link navigation and a mobile menu.
-- **Two independent theming axes**
-  - *Mode*: light / dark, persisted and applied as a `dark` class on `<html>`.
-  - *Theme style*: `chess` or `rubik`, which swaps the accent color tokens and the
-    decorative background art.
+- **Light / dark mode** — persisted and applied as a `dark` class on `<html>`; the gold
+  accent palette styles both modes.
 - **Internationalization** — English (`en-US`) and Portuguese (`pt-BR`), switchable at
   runtime. The active locale also sets `<html lang>` and the document title.
 - **Typed dictionaries** — every translation key is checked at compile time; a missing or
@@ -76,10 +74,9 @@ Personal details (email, phone, GitHub/LinkedIn URLs) are hardcoded in `Hero.tsx
 ## Theming
 
 Accent colors are CSS variables (`--accent`, `--accent-2`, `--accent-soft`,
-`--accent-rgb`) redefined per `data-theme` in `src/index.css`. Use the `text-accent` /
-`bg-accent` / `border-accent` utilities rather than hardcoded colors, or the value won't
-follow the active theme. Tailwind 4 theme tokens go in the `@theme` block of
-`src/index.css`.
+`--accent-rgb`) defined once in `:root` in `src/index.css`. Use the `text-accent` /
+`bg-accent` / `border-accent` utilities rather than hardcoded colors. Tailwind 4 theme
+tokens go in the `@theme` block of `src/index.css`.
 
 ## Build output
 

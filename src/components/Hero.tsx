@@ -1,4 +1,3 @@
-import { useThemeContext } from "../context/ThemeContext";
 import { useLocale } from "../i18n/LocaleContext";
 
 const CODE_SNIPPET = `public class Developer implements Problem­Solver {
@@ -17,7 +16,6 @@ const CODE_SNIPPET = `public class Developer implements Problem­Solver {
 }`;
 
 export default function Hero() {
-  const { themeStyle } = useThemeContext();
   const { t } = useLocale();
 
   return (
@@ -96,12 +94,6 @@ export default function Hero() {
               </pre>
             </div>
           </div>
-
-          {themeStyle === "chess" ? (
-            <div className="chess-divider mx-auto mt-6 w-2/3" />
-          ) : (
-            <div className="rubik-divider mx-auto mt-6 w-2/3" />
-          )}
         </div>
       </div>
     </section>
